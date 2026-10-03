@@ -96,14 +96,6 @@ You are ready.
 
 ## Troubleshooting
 
-**`python` is not recognized (Windows).**
-Try `py -m venv .venv` instead of `python -m venv .venv`. If this also fails, Python is not installed:
-install it from [python.org](https://www.python.org/downloads/) and tick *Add Python to PATH* during installation.
-
-**PowerShell refuses to run `activate` ("running scripts is disabled").**
-Use the *Command Prompt* (`cmd`) instead. If you really want PowerShell, run once:
-`Set-ExecutionPolicy -Scope CurrentUser RemoteSigned`, then `.venv\Scripts\Activate.ps1`.
-
 **The first cell says the notebook is NOT running inside a virtual environment.**
 Jupyter was started from another Python. Close Jupyter, open a terminal, go to the lab folder,
 activate `.venv` (Step 3), then run `jupyter notebook` again from this terminal.
