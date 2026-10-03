@@ -72,20 +72,24 @@ python -m pip install --upgrade pip
 pip install -r requirements.txt
 ```
 
-This installs `numpy`, `matplotlib`, `scikit-learn` and Jupyter **inside** `.venv` only.
+This installs `numpy`, `matplotlib`, `scikit-learn` and `ipykernel` (what VS Code needs to run a notebook) **inside** `.venv` only.
+
+Do not skip the first command: an old version of `pip` can fail to install some packages.
 
 ## Step 5. Open the notebook
 
-**Option A: Jupyter in the browser.** From the same terminal, with `(.venv)` active:
+**Option A (recommended): VS Code.** Open the lab folder in VS Code (*File > Open Folder*), open `lab_regression.ipynb`,
+click on *Select Kernel* at the top right, and choose the interpreter located in `.venv`.
+If VS Code asks to install the *Python* or *Jupyter* extensions, accept.
+
+**Option B: Jupyter in the browser.** From the same terminal, with `(.venv)` active, install Jupyter, then start it:
 
 ```bash
+pip install notebook
 jupyter notebook
 ```
 
 A browser tab opens. Click on `lab_regression.ipynb`.
-
-**Option B: VS Code.** Open the lab folder in VS Code (*File > Open Folder*), open `lab_regression.ipynb`,
-click on *Select Kernel* at the top right, and choose the interpreter located in `.venv`.
 
 ## Step 6. Check your installation
 
@@ -96,18 +100,32 @@ You are ready.
 
 ## Troubleshooting
 
+**`python` is not recognized (Windows).**
+Try `py -m venv .venv` instead of `python -m venv .venv`. If this also fails, Python is not installed:
+install it from [python.org](https://www.python.org/downloads/) and tick *Add Python to PATH* during installation.
+
+**PowerShell refuses to run `activate` ("running scripts is disabled").**
+Use the *Command Prompt* (`cmd`) instead. If you really want PowerShell, run once:
+`Set-ExecutionPolicy -Scope CurrentUser RemoteSigned`, then `.venv\Scripts\Activate.ps1`.
+
 **The first cell says the notebook is NOT running inside a virtual environment.**
 Jupyter was started from another Python. Close Jupyter, open a terminal, go to the lab folder,
 activate `.venv` (Step 3), then run `jupyter notebook` again from this terminal.
 In VS Code, select the `.venv` kernel again.
+
+**`Failed building wheel for argon2-cffi-bindings` when installing `notebook` (macOS).**
+This package has no ready-made version for some Macs, so `pip` tries to compile it and fails.
+The simplest fix is to use VS Code (Option A), which does not need it.
+If you want Jupyter in the browser, install an older version of the package first:
+`pip install "argon2-cffi-bindings<26"`, then `pip install notebook`.
 
 **`ModuleNotFoundError: No module named 'sklearn'` (or `numpy`, ...).**
 The packages are not installed in the active environment. Activate `.venv`, then run
 `pip install -r requirements.txt` again.
 
 **I use Anaconda.**
-The steps above still work from the *Anaconda Prompt*. Make sure that `(.venv)` appears in the prompt
-before running `pip install`.
+Run `conda deactivate` first (until `(base)` disappears from your prompt), then follow the steps above.
+Make sure that `(.venv)` appears in the prompt before running `pip install`.
 
 ---
 
