@@ -24,11 +24,7 @@ This is standard practice for any Python project, in research as in industry.
 
 ## Step 1. Get the lab on your machine
 
-Open a terminal:
-
-* **Windows**: open *Command Prompt* (`cmd`). Avoid PowerShell for this lab (see *Troubleshooting*).
-* **macOS**: open *Terminal*.
-* **Linux**: open your usual terminal.
+Open a terminal.
 
 Move to the folder where you keep your courses, for example:
 
