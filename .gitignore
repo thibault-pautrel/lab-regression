@@ -9,6 +9,9 @@ venv/
 __pycache__/
 *.pyc
 
+# Solutions are never published
+*_solution.ipynb
+
 # OS
 .DS_Store
 Thumbs.db
