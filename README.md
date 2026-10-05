@@ -119,44 +119,14 @@ Then activate the environment (Step 3) and install the packages again, in case t
 pip install -r requirements.txt
 ```
 
-**You cloned the repository under its old name, `lab-regression`?** Nothing to do: GitHub redirects the old address, and `git pull` works as usual. The folder on your machine keeps its old name, which is fine.
-
-**`git pull` refuses: "Please commit your changes or stash them".** This happens when you edited a notebook that the teacher has moved or updated. Your answers are not lost. Run:
-
-```bash
-git stash
-git pull
-git stash pop
-```
-
-`git stash` puts your changes aside, `git pull` gets the new version, and `git stash pop` puts your changes back, even if the notebook has moved to a new folder.
-
 ---
 
 ## Troubleshooting
-
-**`python` is not recognized (Windows).**
-Try `py -m venv .venv` instead of `python -m venv .venv`. If this also fails, Python is not installed:
-install it from [python.org](https://www.python.org/downloads/) and tick *Add Python to PATH* during installation.
-
-**PowerShell refuses to run `activate` ("running scripts is disabled").**
-Use the *Command Prompt* (`cmd`) instead. If you really want PowerShell, run once:
-`Set-ExecutionPolicy -Scope CurrentUser RemoteSigned`, then `.venv\Scripts\Activate.ps1`.
 
 **The first cell says the notebook is NOT running inside a virtual environment.**
 Jupyter was started from another Python. Close Jupyter, open a terminal, go to the `ml-labs` folder,
 activate `.venv` (Step 3), then run `jupyter notebook` again from this terminal.
 In VS Code, select the `.venv` kernel again.
-
-**`FileNotFoundError: data/...` when loading a dataset.**
-The notebook does not run from its own folder. In VS Code, keep the default setting *Jupyter: Notebook File Root* (`${fileDirname}`).
-In the browser, open the notebook from its folder in the Jupyter file list.
-
-**`Failed building wheel for argon2-cffi-bindings` when installing `notebook` (macOS).**
-This package has no ready-made version for some Macs, so `pip` tries to compile it and fails.
-The simplest fix is to use VS Code (Option A), which does not need it.
-If you want Jupyter in the browser, install an older version of the package first:
-`pip install "argon2-cffi-bindings<26"`, then `pip install notebook`.
 
 **`ModuleNotFoundError: No module named 'sklearn'` (or `numpy`, `pandas`, ...).**
 The packages are not installed in the active environment. Activate `.venv`, then run
