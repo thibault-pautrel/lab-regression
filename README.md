@@ -6,6 +6,7 @@ Master Smart Data, ENSAI · Machine Learning labs (2 hours each)
 |---|---|---|---|
 | 1 | `lab1-regression` | `lab_regression.ipynb` | OLS, multiclass logistic regression, Ridge, introduction to inverse problems |
 | 2 | `lab2-svm-knn` | `lab_svm_knn.ipynb` | SVM and the kernel trick, kNN for classification and regression, dimension reduction with gradients |
+| 3 | `lab3-ensembles` | `lab_ensembles.ipynb` | Decision trees, boosting (AdaBoost, gradient boosting, XGBoost), bagging and random forests |
 
 All the labs share **one** repository and **one** virtual environment. You install it once, before the first lab, by following the steps below **in order**. It takes about 10 minutes.
 
@@ -78,7 +79,7 @@ python -m pip install --upgrade pip
 pip install -r requirements.txt
 ```
 
-This installs `numpy`, `scipy`, `matplotlib`, `scikit-learn`, `pandas` and `ipykernel` (what VS Code needs to run a notebook) **inside** `.venv` only.
+This installs `numpy`, `scipy`, `matplotlib`, `scikit-learn`, `pandas`, `xgboost` and `ipykernel` (what VS Code needs to run a notebook) **inside** `.venv` only.
 
 Do not skip the first command: an old version of `pip` can fail to install some packages.
 
@@ -161,6 +162,11 @@ If you want Jupyter in the browser, install an older version of the package firs
 The packages are not installed in the active environment. Activate `.venv`, then run
 `pip install -r requirements.txt` again.
 
+**`xgboost` fails to load (`XGBoostError`, `libomp.dylib` not found) on macOS.**
+XGBoost needs the OpenMP library, which macOS does not provide. Install it with Homebrew: `brew install libomp`,
+then restart the notebook kernel. On Windows, the same error is fixed by installing the
+*Microsoft Visual C++ Redistributable*.
+
 **I use Anaconda.**
 Run `conda deactivate` first (until `(base)` disappears from your prompt), then follow the steps above.
 Make sure that `(.venv)` appears in the prompt before running `pip install`.
@@ -174,5 +180,7 @@ Make sure that `(.venv)` appears in the prompt before running `pip install`.
 | `lab1-regression/lab_regression.ipynb` | Lab 1 notebook |
 | `lab2-svm-knn/lab_svm_knn.ipynb` | Lab 2 notebook |
 | `lab2-svm-knn/data/` | datasets of Lab 2: `data1.txt`, `data2.txt`, and `mpg.csv` (UCI Auto MPG dataset) |
+| `lab3-ensembles/lab_ensembles.ipynb` | Lab 3 notebook |
+| `lab3-ensembles/data/` | dataset of Lab 3: `covertype.csv` (Forest Cover Type dataset, Kaggle version) |
 | `requirements.txt` | the packages to install, for all the labs |
 | `.gitignore` | files that Git must ignore (for example the `.venv` folder and the solutions) |
